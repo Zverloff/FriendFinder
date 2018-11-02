@@ -7,8 +7,11 @@ var app = express()
 var PORT = process.env.PORT || 3000
 
 app.use(bodyParser.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(bodyParser.express.urlencoded({ extended: true }))
+app.use(bodyParser.express.json())
+
+require('.app/routing/apiRoutes.js')
+require('.app/routing/htmlRoutes.js')
 
 app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'home.html'))
